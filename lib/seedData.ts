@@ -93,11 +93,11 @@ export const SEED_TOILETS: ToiletUnit[] = [
   },
   {
     _id: 'unit-standard-construction-04',
-    title: 'Standard Portable Toilet & Construction Site Loo',
-    slug: 'standard-portable-toilet-construction-loo',
-    category: 'Standard Construction Loo',
+    title: 'Standard Portable Toilet & Event Loo',
+    slug: 'standard-portable-toilet-event-loo',
+    category: 'Standard Portable Loo',
     dailyRateKSh: 6500,
-    capacity: 'Full day shift for up to 35 site workers or event guests',
+    capacity: 'Full day shift for up to 35 people · Events, gatherings & daily hire',
     features: [
       'Chemical Recirculating Flush Mechanism',
       'High-Density Polyethylene Heavy-Duty Shell',
@@ -111,7 +111,7 @@ export const SEED_TOILETS: ToiletUnit[] = [
     images: [
       {
         url: standardSiteLooImg,
-        alt: 'Standard Portable Toilet Cabin for Construction Sites and Events in Kenya (KSh 6,500/day)',
+        alt: 'Standard Portable Toilet Cabin for Events, Gatherings and Daily Hire in Kenya (KSh 6,500/day)',
       },
     ],
     isAvailable: true,
@@ -164,7 +164,7 @@ export const SEED_POSTS: BlogPost[] = [
     contentHtml: [
       'Hosting an outdoor wedding in Karen, a corporate expo at KICC, or a music festival in Ngong Hills requires one foundational element that guests notice first: restroom cleanliness.',
       'In Kenya, mobile toilet rental rates depend on four key variables: the type of unit (standard chemical versus luxury flush trailer), duration of hire, distance from central depot, and whether dedicated uniformed attendants are deployed.',
-      '1. Standard Construction & Festival Loos: Typically range from KSh 5,000 to KSh 7,500 per unit per day, including bio-chemical setup and end-of-day evacuation.',
+      '1. Standard Event & Festival Loos: Typically range from KSh 5,000 to KSh 7,500 per unit per day, including bio-chemical setup and end-of-day evacuation.',
       '2. Single Executive Units: Perfect for garden parties and brand activations, priced between KSh 10,000 and KSh 15,000 per day with foot-pump freshwater flush.',
       '3. Luxury Multi-Station VIP Restroom Trailers: Ranging from KSh 45,000 to KSh 85,000 per day. These feature air-conditioned private cubicles, running hot and cold water, vanity mirrors, and five-star hotel aesthetics.',
       'At ChooZetu, all quotes include clear logistics breakdowns, professional delivery, on-site setup, and sanitization before event kick-off.',

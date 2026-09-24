@@ -1,6 +1,6 @@
 export type ToiletCategory =
   | 'VIP Luxury Trailer'
-  | 'Standard Construction Loo'
+  | 'Standard Portable Loo'
   | 'Accessible VIP Unit'
   | 'Single Executive Loo';
 

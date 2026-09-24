@@ -9,11 +9,11 @@ interface PricingPackagesProps {
 export const PricingPackages: React.FC<PricingPackagesProps> = ({ onSelectPackage }) => {
   const packages = [
     {
-      name: 'Standard Site & Event Loo',
-      kicker: 'Construction Sites & Casual Events',
+      name: 'Standard Portable Loo',
+      kicker: 'Outdoor Events, Functions & Day Hires',
       price: '6,500',
       period: 'per day',
-      idealFor: 'Up to 35 site workers or guests · 1-day hire',
+      idealFor: 'Up to 35 guests or attendees · 1-day hire',
       features: [
         'Heavy-duty chemical recirculating flush loo',
         'Built-in antibacterial hand sanitizer dispenser',

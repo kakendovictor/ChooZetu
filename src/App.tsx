@@ -65,7 +65,7 @@ export default function App() {
     'VIP Luxury Trailer',
     'Single Executive Loo',
     'Accessible VIP Unit',
-    'Standard Construction Loo',
+    'Standard Portable Loo',
   ];
 
   const filteredUnits = units.filter((unit) => {
@@ -183,7 +183,7 @@ export default function App() {
                   Mobile Toilet Units in Kenya
                 </h1>
                 <p className="mt-3 text-sm sm:text-base text-slate-300">
-                  Filter by category to explore VIP luxury trailers, wheelchair-accessible suites, standalone executive loos, and standard construction cabins.
+                  Filter by category to explore VIP luxury trailers, wheelchair-accessible suites, standalone executive loos, and versatile standard portable units.
                 </p>
               </div>
 
