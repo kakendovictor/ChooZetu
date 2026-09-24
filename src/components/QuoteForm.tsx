@@ -11,6 +11,9 @@ import {
   Sparkles,
   Calculator,
   Loader2,
+  Mail,
+  Copy,
+  Check,
 } from 'lucide-react';
 import { QuoteFormData, ToiletUnit } from '@/lib/types';
 import { getWhatsAppCustomQuoteLink, CHOOZETU_PHONE_DISPLAY } from '../utils/whatsapp';
@@ -38,6 +41,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ initialSelectedUnit, allUn
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [copiedQuote, setCopiedQuote] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [showCalculator, setShowCalculator] = useState(false);
 
@@ -54,6 +58,45 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ initialSelectedUnit, allUn
         return { ...prev, selectedUnits: [...prev.selectedUnits, unitTitle] };
       }
     });
+  };
+
+  const quoteSummaryText = `CHOZETU MOBILE TOILETS KENYA - QUOTATION REQUEST
+------------------------------------------------------------
+Client Name: ${formData.fullName}
+Phone Number: ${formData.phoneNumber}
+Client Email: ${formData.email || 'Not provided'}
+Event Type: ${formData.eventType}
+Event Location: ${formData.location}
+Guest Count: ${formData.guestCount}
+Event Dates: ${formData.startDate}${formData.endDate ? ` to ${formData.endDate}` : ''}
+Selected Units: ${formData.selectedUnits.join(', ')}
+Uniformed Attendants: ${formData.needAttendants ? 'Yes, requested' : 'No'}
+Special Instructions: ${formData.notes || 'None'}
+------------------------------------------------------------
+Target Quotes Email: quotes@choozetu.co.ke
+WhatsApp Operations: +254 762 344 353`;
+
+  const emailSubject = `Quotation Request: ${formData.fullName} - ${formData.eventType} (${formData.location})`;
+  const emailMailtoLink = `mailto:quotes@choozetu.co.ke?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(quoteSummaryText)}${formData.email ? `&cc=${encodeURIComponent(formData.email)}` : ''}`;
+
+  const whatsappDirectLink = getWhatsAppCustomQuoteLink({
+    name: formData.fullName,
+    phoneNumber: formData.phoneNumber,
+    eventType: formData.eventType,
+    location: formData.location,
+    guestCount: formData.guestCount,
+    dates: `${formData.startDate}${formData.endDate ? ` to ${formData.endDate}` : ''}`,
+    units: formData.selectedUnits,
+    needAttendants: formData.needAttendants,
+    notes: formData.notes,
+  });
+
+  const handleCopyQuote = () => {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(quoteSummaryText);
+      setCopiedQuote(true);
+      setTimeout(() => setCopiedQuote(false), 2500);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -77,31 +120,18 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ initialSelectedUnit, allUn
     setIsSubmitting(true);
 
     try {
-      // Build the WhatsApp message link containing all user selections
-      const whatsappLink = getWhatsAppCustomQuoteLink({
-        name: formData.fullName,
-        phoneNumber: formData.phoneNumber,
-        eventType: formData.eventType,
-        location: formData.location,
-        guestCount: formData.guestCount,
-        dates: `${formData.startDate}${formData.endDate ? ` to ${formData.endDate}` : ''}`,
-        units: formData.selectedUnits,
-        needAttendants: formData.needAttendants,
-        notes: formData.notes,
-      });
-
       // Automatically launch WhatsApp with the formatted request safely in iframe
       if (typeof window !== 'undefined' && typeof document !== 'undefined') {
         try {
           const link = document.createElement('a');
-          link.href = whatsappLink;
+          link.href = whatsappDirectLink;
           link.target = '_blank';
           link.rel = 'noopener noreferrer';
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
         } catch (e) {
-          // If popup is blocked by iframe sandbox, user can click the on-screen WhatsApp button
+          // If popup is blocked by iframe sandbox, user can click the on-screen buttons
         }
       }
 
@@ -115,18 +145,6 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ initialSelectedUnit, allUn
     }
   };
 
-  const whatsappDirectLink = getWhatsAppCustomQuoteLink({
-    name: formData.fullName,
-    phoneNumber: formData.phoneNumber,
-    eventType: formData.eventType,
-    location: formData.location,
-    guestCount: formData.guestCount,
-    dates: `${formData.startDate}${formData.endDate ? ` to ${formData.endDate}` : ''}`,
-    units: formData.selectedUnits,
-    needAttendants: formData.needAttendants,
-    notes: formData.notes,
-  });
-
   return (
     <div className="relative mx-auto w-full max-w-3xl rounded-3xl border border-cyan-500/20 bg-[#07152E]/90 p-6 sm:p-10 shadow-2xl backdrop-blur-2xl">
       {/* Decorative ambient background */}
@@ -136,27 +154,36 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ initialSelectedUnit, allUn
       {submitted ? (
         <div className="py-8 text-center animate-in fade-in zoom-in-95 duration-300">
           <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 ring-8 ring-emerald-500/10">
-            <MessageCircle className="h-10 w-10" />
+            <CheckCircle className="h-10 w-10" />
           </div>
-          <h3 className="text-3xl font-extrabold text-white">Dispatched to WhatsApp!</h3>
+          <h3 className="text-3xl font-extrabold text-white">Quotation Dispatched!</h3>
           <p className="mx-auto mt-3 max-w-lg text-sm text-slate-300">
             Thank you, <span className="font-semibold text-cyan-300">{formData.fullName}</span>! Your customized quotation request for {formData.eventType} in{' '}
-            <span className="font-semibold text-slate-200">{formData.location}</span> has been formatted and sent directly to our fleet operations line on WhatsApp.
+            <span className="font-semibold text-slate-200">{formData.location}</span> has been formatted and routed to both our Quotes Email Desk and WhatsApp fleet desk.
           </p>
 
           <div className="my-8 rounded-2xl border border-cyan-500/20 bg-[#020B1D]/80 p-6 text-left">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-800">
               <h4 className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
                 Dispatched Specifications
               </h4>
-              <span className="text-xs text-emerald-400 font-medium flex items-center gap-1">
-                <CheckCircle className="h-3.5 w-3.5" /> Sent to +254 762 344 353
-              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs text-cyan-300 font-medium flex items-center gap-1 bg-cyan-950/60 px-2.5 py-1 rounded-full border border-cyan-500/30">
+                  <Mail className="h-3 w-3" /> quotes@choozetu.co.ke
+                </span>
+                <span className="text-xs text-emerald-400 font-medium flex items-center gap-1 bg-emerald-950/60 px-2.5 py-1 rounded-full border border-emerald-500/30">
+                  <CheckCircle className="h-3 w-3" /> +254 762 344 353
+                </span>
+              </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
               <div>
                 <span className="text-slate-500">Contact Phone:</span>{' '}
                 <span className="text-white font-medium">{formData.phoneNumber}</span>
+              </div>
+              <div>
+                <span className="text-slate-500">Contact Email:</span>{' '}
+                <span className="text-white font-medium">{formData.email || 'Not provided'}</span>
               </div>
               <div>
                 <span className="text-slate-500">Event Date(s):</span>{' '}
@@ -172,6 +199,10 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ initialSelectedUnit, allUn
                   {formData.needAttendants ? 'Yes (Requested)' : 'No'}
                 </span>
               </div>
+              <div>
+                <span className="text-slate-500">Quotes Destination:</span>{' '}
+                <span className="text-emerald-300 font-medium">quotes@choozetu.co.ke</span>
+              </div>
               <div className="sm:col-span-2">
                 <span className="text-slate-500">Selected Unit(s):</span>{' '}
                 <span className="text-cyan-300 font-medium">{formData.selectedUnits.join(', ')}</span>
@@ -185,27 +216,53 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ initialSelectedUnit, allUn
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href={emailMailtoLink}
+              className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3.5 text-sm font-bold text-slate-950 shadow-lg shadow-cyan-500/20 hover:scale-[1.02] active:scale-[0.98] transition-transform"
+            >
+              <Mail className="h-4 w-4 text-slate-950" />
+              Send to quotes@choozetu.co.ke
+            </a>
             <a
               href={whatsappDirectLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 px-7 py-3.5 text-sm font-extrabold text-slate-950 shadow-xl shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 text-sm font-bold text-slate-950 shadow-lg shadow-emerald-500/20 hover:bg-emerald-400 hover:scale-[1.02] active:scale-[0.98] transition-transform"
             >
-              <MessageCircle className="h-5 w-5 text-slate-950" />
-              Open in WhatsApp (+254 762 344 353)
+              <MessageCircle className="h-4 w-4 text-slate-950" />
+              Open in WhatsApp
             </a>
+            <button
+              onClick={handleCopyQuote}
+              className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800/80 px-5 py-3.5 text-sm font-medium text-slate-200 hover:bg-slate-700 transition-colors"
+            >
+              {copiedQuote ? (
+                <>
+                  <Check className="h-4 w-4 text-emerald-400" />
+                  Copied!
+                </>
+              ) : (
+                <>
+                  <Copy className="h-4 w-4 text-slate-400" />
+                  Copy Quote Text
+                </>
+              )}
+            </button>
+          </div>
+
+          <div className="mt-6 flex justify-center">
             <button
               onClick={() => {
                 setSubmitted(false);
               }}
-              className="w-full sm:w-auto rounded-xl border border-slate-700 bg-slate-800/80 px-6 py-3.5 text-sm font-medium text-slate-200 hover:bg-slate-700 transition-colors"
+              className="text-xs text-slate-400 hover:text-cyan-300 underline underline-offset-4 transition-colors"
             >
               Modify or Submit Another Request
             </button>
           </div>
           <p className="mt-4 text-xs text-slate-400">
-            Our Nairobi & regional dispatch team typically responds on WhatsApp in under 15 minutes.
+            Our Nairobi & regional dispatch team typically responds via email or WhatsApp in under 15 minutes.
           </p>
         </div>
       ) : (
@@ -260,7 +317,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ initialSelectedUnit, allUn
           )}
 
           {/* Section 1: Contact Information */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
                 Full Name *
@@ -286,6 +343,19 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ initialSelectedUnit, allUn
                 value={formData.phoneNumber}
                 onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                 className="w-full rounded-xl border border-slate-700/80 bg-[#020B1D]/70 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-colors tabular-nums"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+                Email Address (For Quote Copy)
+              </label>
+              <input
+                type="email"
+                placeholder="e.g. sarah@example.com"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="w-full rounded-xl border border-slate-700/80 bg-[#020B1D]/70 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-colors"
               />
             </div>
           </div>
@@ -467,7 +537,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ initialSelectedUnit, allUn
           </div>
 
           <p className="text-center text-xs text-slate-400">
-            Form details are formatted and sent directly to our WhatsApp logistics desk (+254 762 344 353) with zero email delay.
+            Form details are formatted and routed directly to our Quotes Email desk (quotes@choozetu.co.ke) and WhatsApp fleet operations (+254 762 344 353).
           </p>
         </form>
       )}

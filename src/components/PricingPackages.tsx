@@ -34,7 +34,7 @@ export const PricingPackages: React.FC<PricingPackagesProps> = ({ onSelectPackag
         'Single standalone luxury executive loo',
         'Freshwater foot-pedal flush',
         'Internal handwashing basin with antibacterial soap',
-        'Overhead solar LED soft lighting',
+        'Overhead soft ambient LED lighting',
         'Standard eco-deodorizer & fresh scenting',
         'Pre-event delivery and post-event removal',
       ],

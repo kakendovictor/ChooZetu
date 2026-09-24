@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, Clock, MapPin, Award, Sparkles } from 'lucide-react';
-import heroLuxuryTrailerImg from '../assets/images/hero_luxury_trailer_1790245910200.jpg';
+import heroLuxuryTrailerImg from '../assets/images/kenya_luxury_vip_trailer_1790266624260.jpg';
 
 interface HeroSectionProps {
   onRequestQuote: () => void;

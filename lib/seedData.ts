@@ -1,9 +1,9 @@
 import { ToiletUnit, BlogPost } from './types';
-import heroTrailerImg from '../src/assets/images/hero_luxury_trailer_1790245910200.jpg';
-import vipInteriorImg from '../src/assets/images/vip_interior_luxury_1790245924670.jpg';
-import accessibleVipImg from '../src/assets/images/accessible_vip_unit_1790245936767.jpg';
-import executiveSingleImg from '../src/assets/images/executive_single_loo_1790245952767.jpg';
-import standardSiteLooImg from '../src/assets/images/standard_site_portable_loo_1790264604232.jpg';
+import heroTrailerImg from '../src/assets/images/kenya_luxury_vip_trailer_1790266624260.jpg';
+import vipInteriorImg from '../src/assets/images/kenya_vip_trailer_interior_1790266635715.jpg';
+import accessibleVipImg from '../src/assets/images/kenya_accessible_vip_loo_1790266661245.jpg';
+import executiveSingleImg from '../src/assets/images/kenya_executive_single_loo_1790266646219.jpg';
+import standardSiteLooImg from '../src/assets/images/kenya_standard_portable_loo_1790266672731.jpg';
 
 export const SEED_TOILETS: ToiletUnit[] = [
   {
@@ -20,7 +20,7 @@ export const SEED_TOILETS: ToiletUnit[] = [
       'LED Backlit Vanity & Full Mirrors',
       'Bluetooth Ambient Sound System',
       'Luxury Hand Soaps & Fragrance Diffusers',
-      'Solar Battery + Generator Backup',
+      'Silent Inverter Battery + Backup Power Hookup',
       'Dedicated Male & Female Suites',
     ],
     images: [
@@ -51,7 +51,7 @@ export const SEED_TOILETS: ToiletUnit[] = [
       'Foot-Operated Flush Mechanism',
       'Emergency Pull-Cord Alarm',
       'Anti-Slip Heavy Duty Flooring',
-      'Solar Interior Lighting',
+      'Soft Interior LED Ambient Lighting',
     ],
     images: [
       {
@@ -76,7 +76,7 @@ export const SEED_TOILETS: ToiletUnit[] = [
     features: [
       'Freshwater Foot-Pedal Flush',
       'Integrated Handwash Station with Soap',
-      'Overhead Solar LED Illumination',
+      'Overhead Soft LED Illumination',
       'Coat Hook & Vanity Wall Mirror',
       'Hygienic Bio-Degradable Odor Neutralizer',
       'Heavy-Duty Ventilated Roof Cavity',
