@@ -3,6 +3,7 @@ import heroTrailerImg from '../src/assets/images/hero_luxury_trailer_17902459102
 import vipInteriorImg from '../src/assets/images/vip_interior_luxury_1790245924670.jpg';
 import accessibleVipImg from '../src/assets/images/accessible_vip_unit_1790245936767.jpg';
 import executiveSingleImg from '../src/assets/images/executive_single_loo_1790245952767.jpg';
+import standardSiteLooImg from '../src/assets/images/standard_site_portable_loo_1790264604232.jpg';
 
 export const SEED_TOILETS: ToiletUnit[] = [
   {
@@ -92,28 +93,29 @@ export const SEED_TOILETS: ToiletUnit[] = [
   },
   {
     _id: 'unit-standard-construction-04',
-    title: 'Heavy-Duty Site Sanitation Cabins (Pair)',
-    slug: 'heavy-duty-site-sanitation-cabins',
+    title: 'Standard Portable Toilet & Construction Site Loo',
+    slug: 'standard-portable-toilet-construction-loo',
     category: 'Standard Construction Loo',
     dailyRateKSh: 6500,
-    capacity: 'Full day shift for up to 30 site workers',
+    capacity: 'Full day shift for up to 35 site workers or event guests',
     features: [
-      'Anti-Clog Chemical Recirculating System',
-      'Durable High-Density Polyethylene Shell',
-      'External Handwash Station Attachment',
-      'Weekly Pump-Out & Disinfection Included',
-      'Heavy-Duty Security Padlock Hasp',
-      'Slip-Resistant Textured Base',
-      'Translucent Natural Light Skyroof',
+      'Chemical Recirculating Flush Mechanism',
+      'High-Density Polyethylene Heavy-Duty Shell',
+      'Antibacterial Hand Sanitizer Dispenser',
+      'Continuous Odor-Extraction Ventilation Stack',
+      'Daily Bio-Sanitization & Pump-Out Ready',
+      'Heavy-Duty Security Padlock Hasp & Occupancy Lock',
+      'Slip-Resistant Textured Skid Base',
+      'Translucent Natural Daylight Skyroof',
     ],
     images: [
       {
-        url: executiveSingleImg,
-        alt: 'Standard construction site mobile toilet cabins in Kenya',
+        url: standardSiteLooImg,
+        alt: 'Standard Portable Toilet Cabin for Construction Sites and Events in Kenya (KSh 6,500/day)',
       },
     ],
     isAvailable: true,
-    internalVendorInfo: 'Fleet Yard: Athi River & Mombasa Road Hub. Available on long-term monthly lease discount.',
+    internalVendorInfo: 'Fleet Yard: Athi River & Mombasa Road Hub. In-stock and available for immediate dispatch across Nairobi.',
   },
   {
     _id: 'unit-vip-trailer-05',

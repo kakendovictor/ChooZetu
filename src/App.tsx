@@ -146,7 +146,7 @@ export default function App() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {units.slice(0, 3).map((unit) => (
+                  {units.map((unit) => (
                     <ToiletCard
                       key={unit._id}
                       unit={unit}

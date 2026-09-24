@@ -16,7 +16,7 @@ export const ALL_TOILETS_QUERY = `*[_type == "toilet"] | order(dailyRateKSh desc
   internalVendorInfo
 }`;
 
-export const FEATURED_TOILETS_QUERY = `*[_type == "toilet" && isAvailable == true] | order(dailyRateKSh desc)[0...4] {
+export const FEATURED_TOILETS_QUERY = `*[_type == "toilet" && isAvailable == true] | order(dailyRateKSh desc) {
   _id,
   title,
   "slug": slug.current,

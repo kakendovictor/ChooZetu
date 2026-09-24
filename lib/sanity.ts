@@ -65,8 +65,8 @@ export async function sanityFetch<T = any>({
     if (params?.category && params.category !== 'All') {
       return SEED_TOILETS.filter((t) => t.category === params.category) as unknown as T;
     }
-    if (query.includes('[0...4]')) {
-      return SEED_TOILETS.slice(0, 4) as unknown as T;
+    if (query.includes('[0...4]') || query === FEATURED_TOILETS_QUERY) {
+      return SEED_TOILETS as unknown as T;
     }
     return SEED_TOILETS as unknown as T;
   }

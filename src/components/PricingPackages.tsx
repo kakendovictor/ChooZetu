@@ -9,6 +9,22 @@ interface PricingPackagesProps {
 export const PricingPackages: React.FC<PricingPackagesProps> = ({ onSelectPackage }) => {
   const packages = [
     {
+      name: 'Standard Site & Event Loo',
+      kicker: 'Construction Sites & Casual Events',
+      price: '6,500',
+      period: 'per day',
+      idealFor: 'Up to 35 site workers or guests · 1-day hire',
+      features: [
+        'Heavy-duty chemical recirculating flush loo',
+        'Built-in antibacterial hand sanitizer dispenser',
+        'Ventilated odor-extraction chimney stack',
+        'Heavy-duty security padlock hasp & occupancy lock',
+        'Slip-resistant textured floor base',
+        'Rapid setup and scheduled bio-decontamination',
+      ],
+      popular: false,
+    },
+    {
       name: 'Single Executive Package',
       kicker: 'Garden Parties & Small Gatherings',
       price: '12,500',
@@ -74,7 +90,7 @@ export const PricingPackages: React.FC<PricingPackagesProps> = ({ onSelectPackag
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
         {packages.map((pkg, idx) => (
           <div
             key={idx}
