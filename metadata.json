@@ -1,0 +1,6 @@
+{
+  "name": "ChooZetu",
+  "description": "Pure Comfort, Anywhere. Kenya's premier mobile toilet rental platform for luxury weddings, corporate functions, VIP events, and construction sites.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

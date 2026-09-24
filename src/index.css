@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+}
+
+/* Glassmorphism card surface */
+.glass-panel {
+  background: rgba(7, 21, 46, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 242, 254, 0.12);
+}
+
+.glass-panel-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(10, 27, 58, 0.85);
+  border-color: rgba(0, 242, 254, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(0, 242, 254, 0.15);
+}
+
+/* Subtle water sparkle glow */
+@keyframes waterGlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.08);
+  }
+}
+
+.animate-water-glow {
+  animation: waterGlow 8s ease-in-out infinite;
+}
+
+/* Cyan shimmer highlight */
+.cyan-gradient-text {
+  background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cyan-gradient-bg {
+  background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+}
+
+.cyan-gradient-border {
+  border-image: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%) 1;
+}
+
+/* Custom scrollbar for catalogs */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #020B1D;
+}
+::-webkit-scrollbar-thumb {
+  background: #0F244C;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00F2FE;
+}

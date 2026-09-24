@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #020B1D;
+    color: #E2E8F0;
+    font-family: var(--font-plus-jakarta), sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-outfit), sans-serif;
+  }
+}
+
+.cyan-gradient-text {
+  background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cyan-gradient-bg {
+  background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+}
