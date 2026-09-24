@@ -1,4 +1,8 @@
 import { ToiletUnit, BlogPost } from './types';
+import heroTrailerImg from '../src/assets/images/hero_luxury_trailer_1790245910200.jpg';
+import vipInteriorImg from '../src/assets/images/vip_interior_luxury_1790245924670.jpg';
+import accessibleVipImg from '../src/assets/images/accessible_vip_unit_1790245936767.jpg';
+import executiveSingleImg from '../src/assets/images/executive_single_loo_1790245952767.jpg';
 
 export const SEED_TOILETS: ToiletUnit[] = [
   {
@@ -20,11 +24,11 @@ export const SEED_TOILETS: ToiletUnit[] = [
     ],
     images: [
       {
-        url: '/src/assets/images/hero_luxury_trailer_1790245910200.jpg',
+        url: heroTrailerImg,
         alt: 'ChooZetu Presidential VIP Restroom Trailer setup in Karen Nairobi',
       },
       {
-        url: '/src/assets/images/vip_interior_luxury_1790245924670.jpg',
+        url: vipInteriorImg,
         alt: 'Interior view of ChooZetu luxury mobile restroom with porcelain fixtures and vanity',
       },
     ],
@@ -50,11 +54,11 @@ export const SEED_TOILETS: ToiletUnit[] = [
     ],
     images: [
       {
-        url: '/src/assets/images/accessible_vip_unit_1790245936767.jpg',
+        url: accessibleVipImg,
         alt: 'Accessible VIP Mobile Restroom with Ramp and Handrails in Kenya',
       },
       {
-        url: '/src/assets/images/vip_interior_luxury_1790245924670.jpg',
+        url: vipInteriorImg,
         alt: 'Clean interior view of accessible mobile restroom',
       },
     ],
@@ -79,7 +83,7 @@ export const SEED_TOILETS: ToiletUnit[] = [
     ],
     images: [
       {
-        url: '/src/assets/images/executive_single_loo_1790245952767.jpg',
+        url: executiveSingleImg,
         alt: 'Single Executive Standalone Mobile Toilet Unit for outdoor corporate events in Nairobi',
       },
     ],
@@ -104,7 +108,7 @@ export const SEED_TOILETS: ToiletUnit[] = [
     ],
     images: [
       {
-        url: '/src/assets/images/executive_single_loo_1790245952767.jpg',
+        url: executiveSingleImg,
         alt: 'Standard construction site mobile toilet cabins in Kenya',
       },
     ],
@@ -128,11 +132,11 @@ export const SEED_TOILETS: ToiletUnit[] = [
     ],
     images: [
       {
-        url: '/src/assets/images/vip_interior_luxury_1790245924670.jpg',
+        url: vipInteriorImg,
         alt: 'The Sovereign 2-Station Luxury Trailer Interior',
       },
       {
-        url: '/src/assets/images/hero_luxury_trailer_1790245910200.jpg',
+        url: heroTrailerImg,
         alt: 'Exterior view of ChooZetu 2-Station trailer',
       },
     ],
@@ -150,7 +154,7 @@ export const SEED_POSTS: BlogPost[] = [
     excerpt:
       'Planning an event in Nairobi? Here is a breakdown of mobile toilet rental pricing in KSh, from standard site units to luxury air-conditioned VIP trailers.',
     mainImage: {
-      url: '/src/assets/images/hero_luxury_trailer_1790245910200.jpg',
+      url: heroTrailerImg,
       alt: 'Luxury mobile toilet rental costs in Nairobi Kenya',
     },
     readTimeMinutes: 5,
@@ -172,7 +176,7 @@ export const SEED_POSTS: BlogPost[] = [
     excerpt:
       'Lake Naivasha and Great Rift Valley outdoor weddings demand robust, elegant sanitation. Learn how to size VIP trailers and manage power and water in remote scenic venues.',
     mainImage: {
-      url: '/src/assets/images/vip_interior_luxury_1790245924670.jpg',
+      url: vipInteriorImg,
       alt: 'VIP mobile restroom trailer setup for destination wedding in Naivasha',
     },
     readTimeMinutes: 4,
@@ -195,7 +199,7 @@ export const SEED_POSTS: BlogPost[] = [
     excerpt:
       'Ensure your project meets Kenyan environmental and occupational safety standards with certified mobile toilets and safe biological waste disposal.',
     mainImage: {
-      url: '/src/assets/images/accessible_vip_unit_1790245936767.jpg',
+      url: accessibleVipImg,
       alt: 'Construction site sanitation compliance in Nairobi Kenya',
     },
     readTimeMinutes: 6,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, Clock, MapPin, Award, Sparkles } from 'lucide-react';
+import heroLuxuryTrailerImg from '../assets/images/hero_luxury_trailer_1790245910200.jpg';
 
 interface HeroSectionProps {
   onRequestQuote: () => void;
@@ -85,7 +86,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRequestQuote, onView
             <div className="relative rounded-3xl border border-cyan-500/20 bg-gradient-to-b from-cyan-500/10 to-transparent p-2 backdrop-blur-md shadow-2xl">
               <div className="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-[4/3] overflow-hidden rounded-2xl bg-slate-900">
                 <img
-                  src="/src/assets/images/hero_luxury_trailer_1790245910200.jpg"
+                  src={heroLuxuryTrailerImg}
                   alt="ChooZetu Luxury Mobile Restroom Trailer setup in Karen Nairobi Kenya"
                   referrerPolicy="no-referrer"
                   className="h-full w-full object-cover"
